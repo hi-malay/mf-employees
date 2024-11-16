@@ -33,7 +33,6 @@ export default class Root extends React.Component<any, ComponentState> {
   render() {
     const { employees } = this.state;
 
-    console.log('employee22s :>> ', process.env.BASE_URL);
     if (!employees.length) {
       return (
         <div className="spinner-border" role="status">
@@ -58,7 +57,7 @@ export default class Root extends React.Component<any, ComponentState> {
               return (
                 <tr key={employee.id}>
                   <th>
-                    <Link to={`/mf-root-config/employees/${employee.id}`}>{employee.id}</Link>
+                  <Link to={`/employees/${employee.id}`}>{employee.id}</Link>
                   </th>
                   <td>{employee.first_name}</td>
                   <td>{employee.last_name}</td>
