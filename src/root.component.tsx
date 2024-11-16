@@ -57,7 +57,7 @@ export default class Root extends React.Component<any, ComponentState> {
               return (
                 <tr key={employee.id}>
                   <th>
-                  <Link to={`/employees/${employee.id}`}>{employee.id}</Link>
+                  <Link to={`employees/${employee.id}`}>{employee.id}</Link>
                   </th>
                   <td>{employee.first_name}</td>
                   <td>{employee.last_name}</td>
