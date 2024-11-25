@@ -9,6 +9,13 @@ module.exports = (webpackConfigEnv) => {
   });
 
   return webpackMerge.smart(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    devServer: {
+      host: "0.0.0.0", // Bind to all network interfaces
+      port: 9002,
+      historyApiFallback: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    },
   });
 };
