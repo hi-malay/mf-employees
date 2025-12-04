@@ -3,10 +3,8 @@ import { BrowserRouter, Link } from "react-router-dom";
 
 export interface Employee {
   id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  avatar: string;
+  title: string;
+  body: string;
 }
 
 const Root: React.FC<{ name: string; isLoggedIn: boolean }> = ({
@@ -14,11 +12,11 @@ const Root: React.FC<{ name: string; isLoggedIn: boolean }> = ({
   isLoggedIn,
 }) => {
   const [employees, setEmployees] = useState<Employee[]>([]);
-
+  console.log("dasdsa", employees);
   useEffect(() => {
-    fetch("https://reqres.in/api/users")
+    fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
-      .then((data) => setEmployees(data.data))
+      .then((data) => setEmployees(data))
       .catch((error) => console.error("Error fetching employees:", error));
   }, []);
 
@@ -36,9 +34,8 @@ const Root: React.FC<{ name: string; isLoggedIn: boolean }> = ({
         <thead>
           <tr>
             <th scope="col">ID {isLoggedIn ? "" : "(Access Required)"}</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
           </tr>
         </thead>
         <tbody>
@@ -51,9 +48,8 @@ const Root: React.FC<{ name: string; isLoggedIn: boolean }> = ({
                   ""
                 )}
               </th>
-              <td>{employee.first_name}</td>
-              <td>{employee.last_name}</td>
-              <td>{employee.email}</td>
+              <td>{employee.title}</td>
+              <td>{employee.body}</td>
             </tr>
           ))}
         </tbody>
